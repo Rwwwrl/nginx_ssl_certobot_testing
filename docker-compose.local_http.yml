@@ -1,5 +1,9 @@
 services:
 
+  web_app:
+    volumes:
+      - ./src/:/usr/code/project/src/
+
   nginx:
     build:
       target: local_http_build
