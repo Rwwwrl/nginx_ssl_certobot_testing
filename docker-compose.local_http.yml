@@ -1,0 +1,5 @@
+services:
+
+  nginx:
+    build:
+      target: local_http_build

@@ -1,0 +1,7 @@
+services:
+
+  nginx:
+    build:
+      target: local_https_build
+    ports:
+      - 443:443
