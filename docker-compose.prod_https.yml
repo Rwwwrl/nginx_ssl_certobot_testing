@@ -1,0 +1,25 @@
+services:
+
+  nginx:
+    build:
+      target: prod_https_build
+    ports:
+      - 443:443
+    volumes:
+      - certbot_letsencrypt:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+
+  certbot:
+    image: certbot/certbot
+    depends_on:
+      - nginx
+    container_name: certbot
+    volumes:
+      - certbot_letsencrypt:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+
+    command: certonly --webroot --webroot-path=/var/www/certbot --email lesh.solowiew@yandex.ru --agree-tos --no-eff-email -d myeshoponcontainers.site
+
+volumes:
+  certbot_letsencrypt:
+  certbot_www:

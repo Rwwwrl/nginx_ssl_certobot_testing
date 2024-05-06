@@ -19,3 +19,4 @@ COPY local_https_build/localhost.key /etc/nginx/localhost.key
 
 FROM base_build as prod_https_build
 
+COPY prod_https_build/nginx.conf /etc/nginx/nginx.conf
